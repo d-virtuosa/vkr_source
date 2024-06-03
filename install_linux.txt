@@ -1,0 +1,31 @@
+sudo su
+
+# passwd
+
+deluser conf
+
+apt install cron python3-pip docker.io docker-compose unzip openvpn nano
+
+setcap 'cap_net_bind_service=+ep' `readlink -f \`which python3\``
+
+chmod 4755 $(which openvpn)
+
+(postgres) docker-compose build
+
+docker-compose up
+
+adduser web-user
+
+(web-server) pip install -r requirements.py
+
+crontab -e
+	@reboot /usr/bin/python3 /home/web-user/www-data/run.py
+
+ln -s /dev/null .bash_history -f
+
+
+
+
+passwords
+web-user:P@ssw0rd!
+root:v3ry_h4rd_t0_brut3_p@ssw0rd!

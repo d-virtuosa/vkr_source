@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">Welcome to My <span class="animated-text">Blog</span></h1>
+            <p class="header-subtitle">Discover the latest news, stories, and insights</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="posts">
+                    {% for post in posts %}
+                    <article class="post">
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        <p class="post-meta"><span class="category">{{ post.category }}</span> | <span class="date">{{ post.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span></p>
+                        <p class="post-content">{{ post.content }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="filter-form">
+                    <h3>Filter Posts</h3>
+                    <form action="/list_post" method="get">
+                        <div class="form-group">
+                            {% if current_filter %}
+                                <p>Current filter: {{ current_filter }}</p>
+                            {% endif %}
+                            <label for="category">Category:</label>
+                            <select name="filter" class="form-control" id="category">
+                                <option value="">All Categories</option>
+                                {% for category in categories %}
+                                <option value="{{ category }}">{{ category }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </form>
+                </div>
+                <div class="create-post-form">
+                    <h3>Create Post</h3>
+                    <form action="/create_post" method="post">
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <input type="text" name="title" class="form-control" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <input type="text" name="category" class="form-control" id="category">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content:</label>
+                            <textarea name="content" class="form-control" id="content" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post Now!</button>
+                    </form>
+                </div>
+                <div class="logout-form">
+                    <h3>Logout</h3>
+                    <!-- Display username if user is logged in -->
+                    {% if session.user_id %}
+                        <p>Logged in as: {{ current_username }}</p>
+                    {% endif %}
+                    <form action="{{ url_for('main.logout') }}" method="post">
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">© 2024 With love by d.virtuosa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
+

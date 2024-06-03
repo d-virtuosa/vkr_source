@@ -1,0 +1,92 @@
+/* static/css/styles.css */
+
+/* Header Styles */
+.header {
+    background-color: #7d857d; /* Зеленый цвет */
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+/* Main Content Styles */
+.container {
+    margin: 20px auto;
+}
+
+.posts {
+    margin-top: 40px;
+}
+
+.post {
+    background-color: #f9f9f9; /* Светло-серый цвет */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Черный цвет */
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.post-content {
+    color: #555;
+}
+
+.date {
+    font-style: italic;
+}
+
+/* Filter Form Styles */
+.filter-form, .create-post-form {
+    background-color: #fff; /* Белый цвет */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-form h3, .create-post-form h3 {
+    margin-top: 0;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #333; /* Черный цвет */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #4CAF50; /* Зеленый цвет */
+    border-color: #4CAF50; /* Зеленый цвет */
+}
+
+.btn-primary:hover {
+    background-color: #45a049; /* Темно-зеленый цвет */
+    border-color: #45a049; /* Темно-зеленый цвет */
+}
+
+/* Animation Styles */
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    20% { color: #ff8000; }
+    40% { color: #ffff00; }
+    60% { color: #00ff00; }
+    80% { color: #0000ff; }
+    100% { color: #ff00ff; }
+}
+
+.animated-text {
+    animation: rainbow 5s infinite;
+}
